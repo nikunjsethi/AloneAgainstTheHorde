@@ -3,8 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.InputSystem;
 public class Gun : MonoBehaviour
 {
+    public InputActionReference shootingReference;
+    public InputActionProperty shootingProperty;
+
     public float damage = 10f;
     public float range = 100f;
     public GameObject cam;
@@ -13,10 +17,21 @@ public class Gun : MonoBehaviour
     [Header("Scripts")]
     public PlayerMovement playerMovement;
     public EnemyMovement enemyMovement;
+
+    private void Awake()
+    {
+        //shootingReference.action.started += Shoot;
+        shootingProperty.action.Enable();
+    }
+
+    //private void OnDestroy()
+    //{
+    //    shootingReference.action.started -= Shoot;
+    //}
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if (shootingProperty.action.triggered)
         {
             Shoot();
         }
@@ -24,21 +39,21 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
-        RaycastHit hit;
-        playerMovement.PlayerShooting(0);       //0 array clip is for gun shooting
+        //RaycastHit hit;
         muzzleFlash.Play();
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
-        {
-            if (hit.transform.gameObject.CompareTag("Enemy"))
-            {
-                hit.transform.gameObject.GetComponent<EnemyMovement>().bloodEffect.Play();
-                hit.transform.gameObject.GetComponent<EnemyMovement>().hitCount++;
-                Debug.Log(hit.transform.gameObject.name);
-            }
-            else
-            {
-                Debug.Log(hit.transform.gameObject.name);
-            }
-        }
+        playerMovement.PlayerShooting(0);       //0 array clip is for gun shooting
+        //if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
+        //{
+        //    if (hit.transform.gameObject.CompareTag("Enemy"))
+        //    {
+        //        hit.transform.gameObject.GetComponent<EnemyMovement>().bloodEffect.Play();
+        //        hit.transform.gameObject.GetComponent<EnemyMovement>().hitCount++;
+        //        Debug.Log(hit.transform.gameObject.name);
+        //    }
+        //    else
+        //    {
+        //        Debug.Log(hit.transform.gameObject.name);
+        //    }
+        //}
     }
 }
