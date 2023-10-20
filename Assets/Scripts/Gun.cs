@@ -39,21 +39,21 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
-        //RaycastHit hit;
+        RaycastHit hit;
         muzzleFlash.Play();
         playerMovement.PlayerShooting(0);       //0 array clip is for gun shooting
-        //if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
-        //{
-        //    if (hit.transform.gameObject.CompareTag("Enemy"))
-        //    {
-        //        hit.transform.gameObject.GetComponent<EnemyMovement>().bloodEffect.Play();
-        //        hit.transform.gameObject.GetComponent<EnemyMovement>().hitCount++;
-        //        Debug.Log(hit.transform.gameObject.name);
-        //    }
-        //    else
-        //    {
-        //        Debug.Log(hit.transform.gameObject.name);
-        //    }
-        //}
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
+        {
+            if (hit.transform.gameObject.CompareTag("Enemy"))
+            {
+                hit.transform.gameObject.GetComponent<EnemyMovement>().bloodEffect.Play();
+                hit.transform.gameObject.GetComponent<EnemyMovement>().hitCount++;
+                Debug.Log(hit.transform.gameObject.name);
+            }
+            else
+            {
+                Debug.Log(hit.transform.gameObject.name);
+            }
+        }
     }
 }
