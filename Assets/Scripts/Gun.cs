@@ -6,12 +6,11 @@ using Cinemachine;
 using UnityEngine.InputSystem;
 public class Gun : MonoBehaviour
 {
-    public InputActionReference shootingReference;
     public InputActionProperty shootingProperty;
 
     public float damage = 10f;
     public float range = 100f;
-    public GameObject cam;
+    public Transform shootingDirection;             //for raycasting purposes
     public ParticleSystem muzzleFlash;
 
     [Header("Scripts")]
@@ -20,15 +19,9 @@ public class Gun : MonoBehaviour
 
     private void Awake()
     {
-        //shootingReference.action.started += Shoot;
         shootingProperty.action.Enable();
     }
 
-    //private void OnDestroy()
-    //{
-    //    shootingReference.action.started -= Shoot;
-    //}
-    // Update is called once per frame
     void Update()
     {
         if (shootingProperty.action.triggered)
@@ -42,7 +35,7 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
         muzzleFlash.Play();
         playerMovement.PlayerShooting(0);       //0 array clip is for gun shooting
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
+        if (Physics.Raycast(shootingDirection.position, shootingDirection.forward, out hit, range))
         {
             if (hit.transform.gameObject.CompareTag("Enemy"))
             {

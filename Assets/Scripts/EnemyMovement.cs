@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     private NavMeshAgent enemyNav;
-    public Transform player;
+    Transform player;
     public Animator zombie;
     public ParticleSystem bloodEffect;
     [Header("Audios")]
