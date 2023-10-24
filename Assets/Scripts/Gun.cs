@@ -15,7 +15,6 @@ public class Gun : MonoBehaviour
 
     [Header("Scripts")]
     public PlayerMovement playerMovement;
-    public EnemyMovement enemyMovement;
 
     private void Awake()
     {

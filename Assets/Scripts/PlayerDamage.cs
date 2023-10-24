@@ -42,7 +42,7 @@ public class PlayerDamage : MonoBehaviour
                 gameOverText.text = "game over";
                 gameFinished = true;
                 healthHurt.enabled = true;
-                Player.SetActive(false);
+                //Player.SetActive(false);
                 Time.timeScale = 0;
                 this.enabled = false;
             }
@@ -62,7 +62,7 @@ public class PlayerDamage : MonoBehaviour
     {
         healthHurt.enabled = true;
         _playerInjuredAudio.Play();
-        healthBar.fillAmount = healthBar.fillAmount - 0.1f;
+        healthBar.fillAmount = healthBar.fillAmount - 0.001f;         //the max health is 1f
         yield return new WaitForSeconds(3f);
         healthHurt.enabled = false;
     }

@@ -43,16 +43,16 @@ public class EnemyInstantiation : MonoBehaviour
                 }
                 break;
 
-            case 3:
-                if (nextWave == false)
-                {
-                    m_ColorAdjust.active = true;
-                    waveNo.text = "Wave 3";
-                    for (int i = 0; i < 2; i++)
-                        enemyInstantiations[i] = Instantiate(enemies[Random.Range(0, enemies.Length)], instantiatingPoints[Random.Range(0, instantiatingPoints.Length)]);
-                    nextWave = true;
-                }
-                break;
+            //case 3:
+            //    if (nextWave == false)
+            //    {
+            //        m_ColorAdjust.active = true;
+            //        waveNo.text = "Wave 3";
+            //        for (int i = 0; i < 2; i++)
+            //            enemyInstantiations[i] = Instantiate(enemies[Random.Range(0, enemies.Length)], instantiatingPoints[Random.Range(0, instantiatingPoints.Length)]);
+            //        nextWave = true;
+            //    }
+            //    break;
 
             //case 4:
             //    if (nextWave == false)
