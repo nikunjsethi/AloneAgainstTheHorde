@@ -7207,7 +7207,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerMovement
       value: 
-      objectReference: {fileID: 8997996946516755927}
+      objectReference: {fileID: 7873184977083754400}
     - target: {fileID: 6423529237466884546, guid: fb121b5862650744d98926f73e11c92c,
         type: 3}
       propertyPath: shootingDirection
